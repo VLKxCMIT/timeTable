@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Time Table</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <script src="jquery-2.2.3.js" type="text/javascript"></script>
+        <script src="underscore.js" type="text/javascript"></script>
+        <script type="text/javascript" src="timetable.js"></script>
+        <script type="text/javascript" src="scripts.js"></script>
+
+        <script id="myTemplate" type="text/template">
+            <button class="tableButtons" data-id="<%= classId %>"><%= title %></button>
+        </script>
+
+        <script id="tableTemplate" type="text/template">
+            <table class="timeTable" id="<%= classId %>">
+                <caption>Розклад на 2015/2016 н.р. для <%= title %>у</caption>
+                <thead>
+                    <tr>
+                        <th>День неділі</th>
+                        <th>№</th>
+                        <th>Урок</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </script>
+
+        <script id="trTdDayTemplate" type="text/template">
+            <tr>
+                <td rowspan="<%= subjects.length %>"><%= day %></td>
+                <td>1</td>
+                <td><%= subjects[0] %></td>
+            </tr>
+            <% _.each(subjects, function(item, i) {
+            if (i != 0) { var b = 1; b = b + i %>
+            <tr>
+                <td><%= b %></td>
+                <td><%= item %></td>
+            </tr>
+            <% }
+            }); %>
+        </script>
+
+        <script id="horizontalTableTemplate" type="text/template">
+            <table class="timeTable" id="<%= classId %>">
+                <caption>Розклад на 2015/2016 н.р. для <%= title %>у</caption>
+                <thead>
+                    <tr>
+                        <% _.each(days, function(item) { %>
+                                <th colspan="2"><%= item.day %></th>
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </script>
+
+        <script id="horizontalTrDayTemplate" type="text/template">
+            <tr>
+                <% _.each(lessons, function(lesson) { %>
+                    <td><%= lesson.lCount %></td>
+                    <td><%= lesson.name %></td>
+                <% }); %>
+            </tr>
+        </script>
+
+    </head>
+    <body>
+        <div id="classList"></div>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+.timeTable {
+    border: 1px solid red;
+    white-space: nowrap; /* запрет переноса слов */
+    border-collapse: collapse;
+    background-color: #f0f0f0;
+}
+.timeTable tr td, .timeTable th, .timeTable caption{
+    padding: 5px;
+    border: 1px solid green;
+}
+.timeTable caption {
+    border-bottom: none;
+    background-color: #f0f0f0;
+}
+.timeTable th{
+    background-color: gainsboro;
+}
+.timeTable tr td:hover, .timeTable th:hover{
+    color: crimson;
+    cursor: default;
+}
